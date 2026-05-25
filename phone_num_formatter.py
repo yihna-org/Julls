@@ -16,7 +16,7 @@ while True:
         ")",
         ".",
     ]:
-        phon_num = phon_num.replace(ch, " ")
+        phon_num = phon_num.replace(chp, " ")
     phon_num = phon_num.split()
     phon_num = "".join(phon_num)
 
