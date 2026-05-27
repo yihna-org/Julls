@@ -1,4 +1,3 @@
-# create stores
 freelancers = {
     "name": "Freelancing Shop",
     "brian": 70,
@@ -17,41 +16,53 @@ antiques = {
 }
 pet_shop = {"name": "Pet Shop", "blue parrot": 10, "white rabbit": 5, "newt": 2}
 
-# Ver 1.5 print inventory before and after purchases
+shops = [freelancers, antiques, pet_shop]
+
 department_store = freelancers | antiques | pet_shop
 department_store = {k: v for k, v in department_store.items() if k != "name"}
 print("--------inventory before purchases--------")
 print(f"Available items: {', '.join(department_store.keys())}")
 
-# ver 1.3 Add purse with 1000 gold pieces
 purse = 1000
-
-# create an dempty shopping cart
 cart = {}
 
-# loop through stores/dicts
-for shop in (freelancers, antiques, pet_shop):
+while True:
+    print("Which shop do you want to visit?")
+    for i, shop in enumerate(shops, start=1):
+        print(f"  {i}. {shop['name']}")
+
+    choice = input("Enter shop number (or 'exit' to leave): ").lower()
+
+    if choice == "exit":
+        break
+
+    if not choice.isdigit() or not (1 <= int(choice) <= len(shops)):
+        print("Invalid choice, try again")
+        continue
+
+    shop = shops[int(choice) - 1]
     shop_name = shop["name"]
     items = {k: v for k, v in shop.items() if k != "name"}
 
     buy_item = input(
-        f"Welcome to {shop_name}!\nYour balance: {purse} what do you want to buy: {', '.join(items.keys())} - "
+        f"Welcome to {shop_name}!\nYour balance: {purse}\nWhat do you want to buy (or 'exit' to leave): {', '.join(items.keys())} - "
     ).lower()
-    # ver 1.2 add ability to exit a store
-    if buy_item == "exit" or buy_item not in items:
+
+    if buy_item == "exit":
         continue
     elif buy_item in items:
         print(f"{buy_item} added to cart")
         price = shop[buy_item]
     else:
         print("Item not found")
+        continue
+
     cart.update({buy_item: shop.pop(buy_item)})
     purse -= price
     department_store.pop(buy_item)
+
 print(
-    f"You Purchased {', '.join(cart.keys())} -Total {sum(cart.values())}\nMoney left: {purse}\nHave a nice day of mayhem!"
+    f"You Purchased {', '.join(cart.keys())} - Total {sum(cart.values())}\nMoney left: {purse}\nHave a nice day of mayhem!"
 )
-
-
 print("--------inventory after purchases--------")
 print(f"Available items: {', '.join(department_store.keys())}")
