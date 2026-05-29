@@ -1,22 +1,22 @@
 # Python Practice Projects
 
-## Що тут є
+## What’s Inside
 
-### Ігри та логіка
+### Games and Logic
 - rock_paper_scissors.py
 - guess_number01.py
 - trading_game.py
 - adventure_game.py
 - cups.py
 
-### Практика функцій та умов
+### Practice with Functions and Conditions
 - coffee_order.py
 - loyalty_points_cafe.py
 - pizza_classes.py
 - random_prize.py
 - math_tutor.py
 
-### Робота з даними
+### Working with Data
 - phone_num_formatter.py
 - dog_bus_tracker.py
 - access_control.py
@@ -24,15 +24,15 @@
 
 ---
 
-## Запуск
+## Running the Projects
 
-Клонувати репозиторій:
+Clone the repository:
 
 ```bash
 git clone <repo-url>
 ```
 
-Запуск файлу:
+Run a file:
 
 ```bash
 python file_name.py
@@ -40,15 +40,15 @@ python file_name.py
 
 ---
 
-## Технології
+## Technologies
 
-- Python 3
+- Python
 - Git
 - GitHub
 
 ---
 
-## Нотатки
+## Notes
 
-Цей репозиторій - простір для навчання та експериментів.
-Деякі файли можуть бути простими або незавершеними.
+This repository is a space for learning and experimentation.
+Some files may be simple or unfinished, and that’s completely okay.
