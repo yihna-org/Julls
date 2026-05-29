@@ -36,11 +36,17 @@ while True:
     if choice == "exit":
         break
 
-    if not choice.isdigit() or not (1 <= int(choice) <= len(shops)):
+    if not choice.isdigit():
         print("Invalid choice, try again")
         continue
 
-    shop = shops[int(choice) - 1]
+    choice_int = int(choice)
+
+    if not (1 <= choice_int <= len(shops)):
+        print("Invalid choice, try again")
+        continue
+
+    shop = shops[choice_int - 1]
     shop_name = shop["name"]
     items = {k: v for k, v in shop.items() if k != "name"}
 
