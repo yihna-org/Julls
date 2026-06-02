@@ -11,8 +11,8 @@ total = 0
 drink_count = 0
 
 while True:
-    name = input("Enter your name - ")
-    if name == "done":
+    name = input("Enter your name (or type 'done' for exit) - ")
+    if name.lower() == "done":
         break
 
     order = input("What do you want to drink? ")
