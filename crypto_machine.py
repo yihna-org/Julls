@@ -1,6 +1,7 @@
-def enigma_light():
-    import string
+import string
 
+
+def enigma_light():
     keys = string.ascii_letters + string.punctuation + string.whitespace
     values = keys[-1] + keys[0:-1]
     dict_e = dict(zip(keys, values))
