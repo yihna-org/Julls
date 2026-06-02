@@ -45,8 +45,8 @@ def available(seat_num):
 
 
 while True:
-    ava = available(seat_num)
-    if ava < 8:
+    available_seats = available(seat_num)
+    if available_seats < 8:
         name = input("Enter name of your dog - ")
 
         if name.lower() == "done":
@@ -55,14 +55,14 @@ while True:
         breed = input("Breed of your dog - ")
         pickup_time = input("pickup_time - ")
         dropoff_time = input("dropoff_time - ")
-        next = ava + 1
+        next = available_seats + 1
         seat_num[next] = {
             "name": name,
             "breed": breed,
             "pickup_time": pickup_time,
             "dropoff_time": dropoff_time,
         }
-        print(f"\n👋  {name} in seat {ava+1}")
+        print(f"\n👋  {name} in seat {available_seats+1}")
     else:
         print("Sorry! We do not have any avalable seats!")
         break
