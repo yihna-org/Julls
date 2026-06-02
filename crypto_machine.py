@@ -19,14 +19,15 @@ def enigma_light():
     dict_d = dict(zip(values, keys))
 
     msg = input("Enter your secret message quietly: ")
-    mode = input("Crypto mode: encode (e) OR decrypt (d): ")
+    while True:
+        mode = input("Crypto mode: encode (e) OR decrypt (d): ").lower()
 
-    if mode.lower() == "e":
-        new_msg = "".join([dict_e[letter] for letter in msg])
-    else:
-        new_msg = "".join([dict_d[letter] for letter in msg])
-
-    return new_msg
+        if mode == "e":
+            return "".join([dict_e[letter] for letter in msg])
+        elif mode == "d":
+            return "".join([dict_d[letter] for letter in msg])
+        else:
+            print("Invalid input. Please try again.")
 
 
 print(enigma_light())
