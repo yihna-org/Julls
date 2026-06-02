@@ -24,7 +24,7 @@ while True:
     elif order.lower() == "espresso":
         total += 2.50
     else:
-        print("Sorry, we don`t have that. Pleace order somethink different")
+        print("Sorry, we don`t have that. Pleace order something different")
         continue
     drink_count += 1
 print(f"You`ve ordered {drink_count}, you need to pay {total}")
