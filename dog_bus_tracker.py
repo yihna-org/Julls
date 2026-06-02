@@ -33,11 +33,13 @@ seat_num = {
 # starting roster showing each pet’s seat, name, and pickup time.
 
 print("------Starting roster list------")
-for seat, pet in seat_num.items():
-    name = pet.get("name", "Empty")
-    pickup = pet.get("pickup_time", "—")
 
-    print("Seat:", seat, "| Name:", name, ", Pickup at", pickup)
+
+def roster_list():
+    for seat, pet in seat_num.items():
+        name = pet.get("name", "Empty")
+        pickup = pet.get("pickup_time", "—")
+        print(f"Seat: {seat} | Name: {name} | Pickup at {pickup}")
 
 
 def available(seat_num):
@@ -47,7 +49,7 @@ def available(seat_num):
 while True:
     available_seats = available(seat_num)
     if available_seats < 8:
-        name = input("Enter name of your dog - ")
+        name = input("Enter name of your dog (or 'done' for exit) - ")
 
         if name.lower() == "done":
             break
@@ -67,12 +69,7 @@ while True:
         print("Sorry! We do not have any avalable seats!")
         break
 
-for seat, info in seat_num.items():
-    name = info.get("name", "Empty")
-    dropoff = info.get("dropoff_time", "—")
-
-    print("Seat:", seat, "| Name:", name, ", Dropoff time", dropoff)
-
+print(roster_list())
 
 print("\n------Drop off time------")
 
@@ -94,7 +91,4 @@ def check_all_dropoffs(seat_num):
 check_all_dropoffs(seat_num)
 
 print("\n------Final roster list------")
-for seat, info in seat_num.items():
-    name = info.get("name", "Empty")
-    dropoff = info.get("dropoff_time", "—")
-    print("Seat:", seat, "| Name:", name, ", Dropoff time", dropoff)
+print(roster_list())
