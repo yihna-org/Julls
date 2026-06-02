@@ -1,26 +1,12 @@
-# 🐾 Dog Bus Tracker — Challenge Steps
-#
-# 1. Start with a bus dictionary holding current passengers.
-#    - Each seat number (1, 2, 3, ...) is a key
-#    - Each value is another dictionary with each pet's:
-#        • name
-#        • breed
-#        • pickup time
-#        • dropoff time
-#
-# 2. Print a starting roster showing each pet’s seat, name, and pickup time.
-#
-# 3. Add one new pet if there’s room on the bus.
-#    - Use MAX_SEATS to limit capacity.
-#    - Dynamically assign the next seat number.
-#    - Print the updated roster showing all pets after pickup.
-#
-# 4. Ask which pet leaves early.
-#    - Remove that pet from the bus.
-#    - Print a message saying they’ve headed home.
-#
-# 5. Print a final roster listing the remaining pets and their dropoff times.
+"""
+Dog Bus Tracker Module
 
+This module manages a digital roster for a dog bus service. It initializes
+a passenger dictionary mapping seat numbers to pet details, displays the
+initial roster, handles dynamic seating assignment for a new pet within a
+defined maximum capacity, and processes early drop-offs by removing pets
+from the bus.
+"""
 
 seat_num = {
     1: {
@@ -52,12 +38,6 @@ for seat, pet in seat_num.items():
     pickup = pet.get("pickup_time", "—")
 
     print("Seat:", seat, "| Name:", name, ", Pickup at", pickup)
-
-
-# 3. Add one new pet if there’s room on the bus.
-#    - Use MAX_SEATS to limit capacity.
-#    - Dynamically assign the next seat number.
-#    - Print the updated roster showing all pets after pickup.
 
 
 def available(seat_num):
@@ -93,9 +73,6 @@ for seat, info in seat_num.items():
 
     print("Seat:", seat, "| Name:", name, ", Dropoff time", dropoff)
 
-# 4. Ask which pet leaves early.
-#    - Remove that pet from the bus.
-#    - Print a message saying they’ve headed home.
 
 print("\n------Drop off time------")
 
@@ -115,8 +92,6 @@ def check_all_dropoffs(seat_num):
 
 
 check_all_dropoffs(seat_num)
-
-# 5. Print a final roster listing the remaining pets and their dropoff times
 
 print("\n------Final roster list------")
 for seat, info in seat_num.items():
