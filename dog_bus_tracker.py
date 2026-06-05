@@ -36,6 +36,14 @@ print("------Starting roster list------")
 
 
 def roster_list():
+    """
+    Displays a list of seats in the vehicle.
+
+    For each seat in the `seat_num`, it prints:
+    - the seat number
+    - the passenger's name (or 'Empty' if the seat is empty)
+    - the boarding time (or '—' if not specified)
+    """
     for seat, pet in seat_num.items():
         name = pet.get("name", "Empty")
         pickup = pet.get("pickup_time", "—")
@@ -43,6 +51,16 @@ def roster_list():
 
 
 def available(seat_num):
+    """
+    Returns the number of occupied seats.
+
+    Args:
+        seat_num (dict): A dictionary where the key is the seat number.
+
+    Returns:
+        int: The number of keys in the dictionary.
+    """
+
     return len(seat_num)
 
 
