@@ -25,18 +25,8 @@ def user_choice():
     return choice
 
 
-def row_choice():
-    """Ask the player to choose a row.
-
-    Keeps prompting until the input is '1', '2', or '3'.
-    """
-
-    choice = "wrong"
-    while choice not in ["1", "2", "3"]:
-        choice = input("Pick a row (1,2,3) - ")
-        if choice not in ["1", "2", "3"]:
-            print("Sorry, invalid choice!")
-    return choice
+def space_check(board, position):
+    return board[position] == "_"
 
 
 def position_choice():
@@ -46,11 +36,14 @@ def position_choice():
     converted to a zero-based list index before being returned.
     """
     choice = 0
-    while choice not in [1, 2, 3]:
-        choice = int(input("Pick a position (1,2,3) - "))
-        if choice not in [1, 2, 3]:
+    while choice not in range(1,10):
+        choice = int(input("Pick a position (1-9) - "))
+        if choice not in range(1,10):
             print("Sorry, invalid choice!")
-    return choice - 1  # 
+        if not space_check(board, choice - 1):
+            print("Place been chosen, choose another one.")
+        break    
+    return choice - 1
 
 
 def user_move(row, position, marker):
