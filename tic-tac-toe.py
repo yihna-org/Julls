@@ -1,18 +1,16 @@
-row1 = ["_", "_", "_"]
-row2 = ["_", "_", "_"]
-row3 = ["_", "_", "_"]
+board = ['_'] * 9
 
 
-def display_game(row1, row2, row3):
+def display_game(board):
     """Print the current state of the tic-tac-toe board.
 
-    Parameters - row1, row2, row3 : list
+    Parameters - board : list
     Lists of three elements representing each row of the board.
     """
     print("Here is the current board:")
-    print("| " + " | ".join(row1) + " |")
-    print("| " + " | ".join(row2) + " |")
-    print("| " + " | ".join(row3) + " |")
+    print("| " + " | ".join(board[0:3]) + " |")
+    print("| " + " | ".join(board[3:6]) + " |")
+    print("| " + " | ".join(board[6:9]) + " |")
 
 def user_choice():
     """Ask the player to choose a marker.
