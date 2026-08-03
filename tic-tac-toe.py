@@ -30,7 +30,7 @@ def space_check(board, position):
     return board[position] == "_"
 
 
-def position_choice():
+def position_choice(board):
     """Ask the player to choose a position within a row.
 
     Keeps prompting until the input is 1, 2, or 3. The result is
@@ -73,11 +73,12 @@ def win_check(board, mark):
         for a, b, c in win_combinations
     )
 
-available = []
-def computer_move():
+def computer_move(board):
+    available = []
     for i in range(9):
-       if space_check(board, i):
-           available.append(i)
+        if space_check(board, i):
+            available.append(i)
+    return random.choice(available)
 
 def gameon_choice():
     """Ask the player whether to continue the game.
@@ -95,14 +96,39 @@ def gameon_choice():
     else:
         return False
 
-
+print('Welcome to Tic Tac Toe!')
 game_on = True
-rows = {"1": row1, "2": row2, "3": row3}
+
 
 while game_on:
-    display_game(row1, row2, row3)
-    marker = user_choice()
-    row_num = row_choice()
-    position = position_choice()
-    user_move(rows[row_num], position, marker)
+    board = ["_"] * 9
+    player_marker = user_choice()
+    computer_marker = "O" if player_marker == "X" else "X"
+    display_game(board)
+    game_run = True
+    while game_run:
+        position = position_choice(board)
+        user_move(board, position, player_marker)
+        display_game(board)
+        if win_check(board, player_marker):
+            print("Congrats! You won!")
+            game_run = False
+            break
+        if full_board_check(board):
+            print('We have a tie^^')
+            game_run = False
+        print("Computer's turn... ")
+        computer_pos = computer_move(board)    
+        user_move(board, computer_pos, computer_marker)
+        display_game(board)
+        if win_check(board, computer_marker):
+            print("Cumputer won!")
+            game_running = False
+            break
+
+        if full_board_check(board):
+            print("We have a tie!")
+            game_running = False
+            break
+
     game_on = gameon_choice()
