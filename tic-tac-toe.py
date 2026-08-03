@@ -46,10 +46,31 @@ def position_choice():
     return choice - 1
 
 
-def user_move(row, position, marker):
+def user_move(board, position, marker):
     """Place the player's marker at the given position in a row.
     """
-    row[position] = marker
+    board[position] = marker
+
+
+def full_board_check(board):
+    return "_" not in board
+
+
+def win_check(board, mark):
+    win_combinations = [
+        (0, 1, 2),
+        (3, 4, 5),
+        (6, 7, 8),
+        (0, 3, 6),
+        (1, 4, 7),
+        (2, 5, 8),
+        (0, 4, 8),
+        (2, 4, 6),
+    ]
+    return any(
+        board[a] == mark and board[b] == mark and board[c] == mark
+        for a, b, c in win_combinations
+    )
 
 
 def gameon_choice():
