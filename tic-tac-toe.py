@@ -27,13 +27,19 @@ def user_choice():
 
 
 def space_check(board, position):
+    """
+    Checks if the position is available.
+
+    Returns True if the position is available and False if it is not.
+    """
+
     return board[position] == "_"
 
 
 def position_choice(board):
-    """Ask the player to choose a position within a row.
+    """Ask the player to choose a position.
 
-    Keeps prompting until the input is 1, 2, or 3. The result is
+    Keeps prompting until the input is 1-9. The result is
     converted to a zero-based list index before being returned.
     """
     choice = 0
@@ -48,16 +54,27 @@ def position_choice(board):
 
 
 def user_move(board, position, marker):
-    """Place the player's marker at the given position in a row.
+    """Place the player's marker at the given position.
     """
     board[position] = marker
 
 
 def full_board_check(board):
+    """
+    Checks if the board is full.
+
+    Returns True if all position is not available.
+    """
     return "_" not in board
 
 
 def win_check(board, mark):
+    """
+    Checks whether there are any winning combinations in the game.
+
+    Returns True if any combination is a winner.
+    """
+
     win_combinations = [
         (0, 1, 2),
         (3, 4, 5),
@@ -74,6 +91,10 @@ def win_check(board, mark):
     )
 
 def computer_move(board):
+    """
+    Returns a random position from the available space.
+    """
+
     available = []
     for i in range(9):
         if space_check(board, i):
