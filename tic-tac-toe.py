@@ -1,3 +1,4 @@
+import random
 board = ['_'] * 9
 
 
@@ -72,6 +73,11 @@ def win_check(board, mark):
         for a, b, c in win_combinations
     )
 
+available = []
+def computer_move():
+    for i in range(9):
+       if space_check(board, i):
+           available.append(i)
 
 def gameon_choice():
     """Ask the player whether to continue the game.
