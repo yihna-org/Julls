@@ -46,15 +46,20 @@ def position_choice(board):
     Keeps prompting until the input is 1-9. The result is
     converted to a zero-based list index before being returned.
     """
-    choice = 0
-    while choice not in range(1, 10):
-        choice = int(input("Pick a position (1-9) - "))
-        if choice not in range(1, 10):
-            print("Sorry, invalid choice!")
-        if not space_check(board, choice - 1):
-            print("Place been chosen, choose another one.")
-        break
-    return choice - 1
+    choice = "wrong"
+
+    while True:
+        choice = input("Pick a position (1-9) - ")
+        if choice.isdigit() == False:
+            print("Sorry, invalid format! Expected a digit (1-9)")
+        else:
+            choice = int(choice)
+            if choice not in range(1, 10):
+                print("Sorry, invalid range! Pick a number within the range (1-9)")
+            elif not space_check(board, choice - 1):
+                print("Place's been chosen, choose another one.")
+            else:
+                return choice - 1
 
 
 def user_move(board, position, marker):
