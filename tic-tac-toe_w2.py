@@ -105,10 +105,7 @@ def choose_first():
     Returns:
         str: (name1 or name2).
     """
-    if random.randint(0, 1) == 0:
-        return name1
-    else:
-        return name2
+    return random.choice([name1, name2])
 
 
 def gameon_choice():
